@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CandyShop</title>
+  <link rel="icon" type="image/png" href="TEMPORAL/CC.png">
+  <style>
+    body {
+      background-color: #1a0a0a;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #f44336;
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      color: #ff4d4d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10000;
+      text-align: center;
+      padding: 30px;
+    }
+
+    #overlay h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    #overlay p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    #overlay button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 18px;
+      background-color: #ff3b3b;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #overlay button:hover {
+      background-color: #cc3232;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #2b0f0f;
+      padding: 20px;
+      box-shadow: 0 0 15px #7f0000;
+      border-radius: 8px;
+      display: none;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #ff5252;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #f44336;
+      padding-bottom: 12px;
+    }
+
+    .product {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .product img {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+      border: 2px solid #ff5252;
+      border-radius: 8px;
+      background-color: #3b1212;
+    }
+
+    .product-name {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #ff6666;
+    }
+
+    .requirements {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #ff7b7b;
+      font-style: italic;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ff3b3b;
+      margin-bottom: 25px;
+    }
+
+    .buy-button {
+      background-color: #ff3b3b;
+      color: white;
+      border: none;
+      padding: 16px 34px;
+      font-size: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-button:hover {
+      background-color: #cc3232;
+    }
+
+    #custom-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background-color: #2b0f0f;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: #ff6666;
+      box-shadow: 0 0 20px #ff0000;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 15px;
+      font-size: 26px;
+    }
+
+    .modal-content p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff3b3b;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="audio" src="TEMPORAL/gangsta.mp3" loop></audio>
+
+  <div id="overlay">
+    <h1>Advertencia de contenido</h1>
+    <p>Este sitio contiene contenido explícito para mayores de 18 años. Si sos menor, abandoná la página ahora.</p>
+    <div>
+      <button onclick="aceptar()">Soy mayor de 18</button>
+      <button onclick="location.href='https://www.google.com'">Soy menor de 18</button>
+    </div>
+  </div>
+
+  <div class="container" id="main-content">
+    <h1>CandyShop</h1>
+    <div class="product">
+      <img src="TEMPORAL/png.png" alt="RTX 3090 4VRAM + 24 GB + RYZEN 7 2600X" />
+      <div class="product-name">RTX 3090 4VRAM + 24 GB + RYZEN 7 2600X</div>
+      <div class="requirements">
+        Requisitos mínimos: Ryzen 5 (cualquier generación), 16 GB RAM, HDD mínimo
+      </div>
+      <div class="price">$120.000</div>
+      <button class="buy-button" onclick="mostrarModal()">Comprar ahora</button>
+    </div>
+
+    <div class="product">
+      <img src="TEMPORAL/candy.png" alt="ClinCandyS" />
+      <div class="product-name">ClinCandyS</div>
+      <div class="requirements">
+        Caramelo lleno de remedios con tal combinación y tales productos que te alteran el cerebro, poniéndote en estado de dopado por 1 hora.
+      </div>
+      <div class="price">1 UNIDAD $10.000</div>
+      <button class="buy-button" onclick="mostrarModal()">Comprar ahora</button>
+    </div>
+
+    <div class="product">
+      <img src="TEMPORAL/ig.jpeg" alt="IG" />
+      <div class="product-name">1000 SEGUIDORES INSTAGRAM</div>
+      <div class="requirements">
+        Seguidores reales en instagram a un precio muy bajo.
+      </div>
+      <div class="price">$25.000</div>
+      <button class="buy-button" onclick="mostrarModal()">Comprar ahora</button>
+    </div>
+
+    <div class="product">
+      <img src="TEMPORAL/as.png" alt="as" />
+      <div class="product-name">ASESINATO</div>
+      <div class="requirements">
+        Asesinato a arma de fuego sin rastros.
+      </div>
+      <div class="price">1 UNIDAD $5.000.000</div>
+      <button class="buy-button" onclick="mostrarModal()">Comprar ahora</button>
+    </div>
+
+    <div class="product">
+      <img src="TEMPORAL/sex.jpg" alt="as" />
+      <div class="product-name">JUGUETE SEXUAL</div>
+      <div class="requirements">
+        Cualquier tipo de juguete sexual se vende aca al doble de precio a menores (Negociable)
+      </div>
+      <div class="price">$X2</div>
+      <button class="buy-button" onclick="mostrarModal()">Comprar ahora</button>
+    </div>
+  </div>
+
+  <div id="custom-modal">
+    <div class="modal-content">
+      <h2>Contacto para completar la compra</h2>
+      <p>Comunicáte por Discord con: <strong>clinpr121</strong><br>Alias de MercadoPago: <strong>clinpr</strong></p>
+      <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    function aceptar() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+
+      const audio = document.getElementById('audio');
+      audio.currentTime = 15;
+      audio.play().catch(err => console.log("Audio no se pudo reproducir:", err));
+    }
+
+    function mostrarModal() {
+      document.getElementById('custom-modal').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      document.getElementById('custom-modal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
