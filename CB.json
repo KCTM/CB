@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Desactivar Cortana",
+    "description": "Elimina Cortana del sistema",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search]\n\"AllowCortana\"=dword:00000000"
+  },
+  {
+    "title": "Limpiar archivos temporales",
+    "description": "Elimina archivos temporales del usuario actual",
+    "type": "bat",
+    "code": "del /q/f/s %TEMP%\\*"
+  }
+]
