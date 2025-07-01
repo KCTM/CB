@@ -6,7 +6,7 @@
     "code": "Windows Registry Editor Version 5.00\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search]\n\"AllowCortana\"=dword:00000000"
   },
   {
-    "title": "Limpiar archivos temporales",
+    "title": "Limpiar Temp",
     "description": "Elimina archivos temporales del usuario actual",
     "type": "bat",
     "code": "del /q /f /s %TEMP%\\*"
@@ -30,7 +30,7 @@
     "code": "ipconfig /flushdns"
   },
   {
-    "title": "Limpiar carpeta Prefetch",
+    "title": "Limpiar Prefetch",
     "description": "Elimina archivos prefetch viejos para mejorar rendimiento",
     "type": "bat",
     "code": "del /s /q C:\\Windows\\Prefetch\\*"
