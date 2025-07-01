@@ -9,6 +9,36 @@
     "title": "Limpiar archivos temporales",
     "description": "Elimina archivos temporales del usuario actual",
     "type": "bat",
-    "code": "del /q/f/s %TEMP%\\*"
+    "code": "del /q /f /s %TEMP%\\*\ndel /q /f /s C:\\Windows\\Temp\\*"
+  },
+  {
+    "title": "Desactivar efectos visuales innecesarios",
+    "description": "Mejora el rendimiento desactivando animaciones y sombras",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n[HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics]\n\"MinAnimate\"=\"0\"\n\n[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects]\n\"VisualFXSetting\"=dword:00000002"
+  },
+  {
+    "title": "Deshabilitar servicio SysMain (Superfetch)",
+    "description": "Apaga el servicio SysMain para reducir uso de disco y CPU",
+    "type": "bat",
+    "code": "sc stop \"SysMain\"\nsc config \"SysMain\" start= disabled"
+  },
+  {
+    "title": "Limpiar caché DNS",
+    "description": "Vacía la caché DNS para mejorar la navegación y resolver problemas de conexión",
+    "type": "bat",
+    "code": "ipconfig /flushdns"
+  },
+  {
+    "title": "Limpiar carpeta Prefetch",
+    "description": "Elimina archivos prefetch viejos para mejorar rendimiento",
+    "type": "bat",
+    "code": "del /s /q C:\\Windows\\Prefetch\\*"
+  },
+  {
+    "title": "Desactivar notificaciones de Windows",
+    "description": "Evita interrupciones y reduce consumo de recursos por notificaciones",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications]\n\"ToastEnabled\"=dword:00000000"
   }
 ]
