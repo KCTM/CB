@@ -102,6 +102,84 @@
     "code": "Windows Registry Editor Version 5.00\n\nyoutube.com/Mazthertutoriales\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\MapsBroker]\n\"Start\"=dword:00000004"
   },
   {
+    "title": "Desactivar servicio de fax",
+    "description": "Apaga el servicio de fax para liberar recursos si no se usa",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Fax]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar servicio de Windows Media Player Network Sharing",
+    "description": "Deshabilita el servicio que comparte contenido multimedia en red",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WMPNetworkSvc]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Servicios de Impresión en Red",
+    "description": "Evita que se inicien servicios relacionados con impresión en red para ahorrar recursos",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Spooler]\n\"Start\"=dword:00000004\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\PrintNotify]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar actualizaciones automáticas de drivers",
+    "description": "Evita que Windows descargue y actualice drivers automáticamente",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate]\n\"ExcludeWUDriversInQualityUpdate\"=dword:00000001"
+  },
+  {
+    "title": "Aumentar el rendimiento de la red",
+    "description": "Desactiva la administración automática de ventanas TCP para mejorar la latencia en juegos y streaming",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters]\n\"EnableTCPChimney\"=dword:00000000\n\"EnableRSS\"=dword:00000000\n\"EnableTCPA\"=dword:00000000"
+  },
+  {
+    "title": "Desactivar Servicio de Windows Biometric Service",
+    "description": "Apaga el servicio biométrico si no usás huellas o reconocimiento facial",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WbioSrvc]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Servicio de Registro Remoto",
+    "description": "Impide el acceso remoto para aumentar la seguridad",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RemoteRegistry]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Servicio de Agente de Protección de Software",
+    "description": "Detiene el servicio de protección de software para evitar chequeos de licencia constantes",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\sppsvc]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Servicio de Actualización de la Tienda de Microsoft",
+    "description": "Evita que la Tienda Microsoft actualice automáticamente las apps",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\ClipSVC]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Servicio de Telemetría de Experiencias Conectadas",
+    "description": "Apaga el servicio que envía datos de uso y telemetría a Microsoft",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\DiagSvc]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Servicio de Planificador de Diagnóstico",
+    "description": "Desactiva tareas programadas de diagnóstico que pueden consumir recursos",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\DiagTrack]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Servicio de Centro de Seguridad",
+    "description": "Apaga el centro de seguridad de Windows para liberar recursos (no recomendado sin otro antivirus)",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\wscsvc]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Desactivar Windows Error Reporting",
+    "description": "Evita que Windows envíe reportes de error, ahorrando recursos y evitando ventanas molestas",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting]\n\"Disabled\"=dword:00000001"
+  },
+  {
     "title": "Desactivar Xbox",
     "description": "Desactiva servicios de Xbox Live y componentes relacionados para reducir el consumo de recursos en PCs sin uso de Xbox",
     "type": "reg",
