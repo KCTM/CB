@@ -84,7 +84,7 @@
     "code": "Windows Registry Editor Version 5.00\n\nyoutube.com/Mazthertutoriales\n\n;Disable Print Spooler\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Spooler]\n\"Start\"=dword:00000004\n\n;Disable Printer Extensions and Notifications\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\PrintNotify]\n\"Start\"=dword:00000004"
   },
   {
-    "title": "Desactivar Windows Update",
+    "title": "Windows Update",
     "description": "Desactiva las actualizaciones automáticas de Windows",
     "type": "reg",
     "code": "Windows Registry Editor Version 5.00\n\n;Disable Windows Update\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\wuauserv]\n\"Start\"=dword:00000004"
