@@ -84,6 +84,18 @@
     "code": "Windows Registry Editor Version 5.00\n\nyoutube.com/Mazthertutoriales\n\n;Disable Print Spooler\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Spooler]\n\"Start\"=dword:00000004\n\n;Disable Printer Extensions and Notifications\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\PrintNotify]\n\"Start\"=dword:00000004"
   },
   {
+    "title": "Desactivar Windows Update",
+    "description": "Desactiva las actualizaciones automáticas de Windows",
+    "type": "reg",
+    "code": "Windows Registry Editor Version 5.00\n\n;Disable Windows Update\n[HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\wuauserv]\n\"Start\"=dword:00000004"
+  },
+  {
+    "title": "Activar Windows",
+    "description": "Descarga CoreActivator para activar Windows 10 o 11, ya sea cualquier versión.",
+    "type": "bat",
+    "code": "@echo off\nstart https://clinpr1.github.io/cl/CoreActivator.html\nexit"
+  },
+  {
     "title": "Desactivar MapsBroker",
     "description": "Desactiva el servicio MapsBroker para liberar recursos del sistema si no se usan mapas o geolocalización",
     "type": "reg",
