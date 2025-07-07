@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ruleta Masturbatoria Pro</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #2c3e50, #4ca1af);
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background 0.8s ease, color 0.8s ease;
+    }
+    h1 {
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 6px #000a;
+      transition: color 0.8s ease;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
+      background: #1abc9c;
+      color: #111;
+      cursor: pointer;
+      margin: 15px 10px;
+      box-shadow: 0 6px #148f77;
+      transition: background 0.3s, color 0.3s;
+      user-select: none;
+    }
+    button:hover {
+      background: #16a085;
+    }
+    button:active {
+      box-shadow: none;
+      transform: translateY(4px);
+    }
+    #resultados {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      min-height: 140px;
+      transition: background 0.8s ease, border-color 0.8s ease, color 0.8s ease;
+      color: inherit;
+    }
+    .opcion {
+      border: 3px solid #16a085;
+      padding: 25px;
+      border-radius: 15px;
+      width: 180px;
+      cursor: pointer;
+      font-size: 24px;
+      background: rgba(255 255 255 / 0.1);
+      user-select: none;
+      box-shadow: 0 0 15px rgba(22, 160, 133, 0);
+      transition: box-shadow 0.3s, transform 0.2s, border-color 0.8s ease, background 0.8s ease, color 0.8s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: inherit;
+    }
+    .opcion:hover {
+      box-shadow: 0 0 25px #1abc9c;
+      transform: scale(1.05);
+    }
+    .seleccionado {
+      border-color: #2ecc71;
+      background: rgba(46, 204, 113, 0.2);
+      box-shadow: 0 0 35px #2ecc71;
+      transform: scale(1.1);
+      pointer-events: none;
+      transition: border-color 0.8s ease, background 0.8s ease, box-shadow 0.8s ease;
+      color: inherit;
+    }
+    #elegido {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px #0008;
+      min-height: 40px;
+      transition: color 0.8s ease;
+      color: inherit;
+    }
+    #historial {
+      margin-top: 50px;
+      width: 320px;
+      max-width: 90vw;
+      background: rgba(255 255 255 / 0.15);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #1118 inset;
+      text-align: left;
+      font-size: 16px;
+      max-height: 180px;
+      overflow-y: auto;
+      user-select: none;
+      transition: background 0.8s ease, color 0.8s ease;
+      color: inherit;
+    }
+    #historial h2 {
+      margin-top: 0;
+      text-align: center;
+      font-size: 20px;
+      text-shadow: 1px 1px 2px #0008;
+      transition: color 0.8s ease;
+      color: inherit;
+    }
+    /* Animación de "girando" */
+    @keyframes girar {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .girando {
+      animation: girar 1s ease-in-out;
+    }
+
+    /* BOTÓN MODO PORNO */
+    #btnModoPorno {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #e91e63;
+      color: #fff;
+      box-shadow: 0 5px 15px #e91e63aa;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 14px;
+      user-select: none;
+      transition: background 0.3s;
+      z-index: 9999;
+      cursor: pointer;
+    }
+    #btnModoPorno:hover {
+      background: #ad1457;
+    }
+
+    /* MODO PORNO ESTILOS */
+    body.modo-porno {
+      background: url('https://media.discordapp.net/attachments/1357190697731620946/1391631815193919560/asi-celebra-su-20-cumpleanos.jpg?ex=686c99a0&is=686b4820&hm=3aea49c5fbc1edc66aeaac1665aed4a6b2ccc813a818fdf7fbb9a2cc882c318e&=&format=webp&width=654&height=483') no-repeat center center fixed;
+      background-size: cover;
+      color: #ff69b4 !important;
+      text-shadow: 0 0 6px #ff69b4bb !important;
+    }
+    body.modo-porno h1,
+    body.modo-porno #elegido,
+    body.modo-porno #historial,
+    body.modo-porno #historial h2 {
+      color: #ff69b4 !important;
+      text-shadow: 0 0 10px #ff69b4bb !important;
+    }
+    body.modo-porno #resultados {
+      background: rgba(255 20 147 / 0.15);
+      color: #ff69b4 !important;
+    }
+    body.modo-porno .opcion {
+      border-color: #ff69b4 !important;
+      background: rgba(255 20 147 / 0.3) !important;
+      box-shadow: 0 0 20px #ff69b4 !important;
+      color: #ff69b4 !important;
+    }
+    body.modo-porno .opcion:hover {
+      box-shadow: 0 0 40px #ff85c1 !important;
+      background: rgba(255 20 147 / 0.6) !important;
+      transform: scale(1.1);
+    }
+    body.modo-porno .seleccionado {
+      border-color: #ff85c1 !important;
+      background: rgba(255 20 147 / 0.7) !important;
+      box-shadow: 0 0 50px #ff85c1 !important;
+      transform: scale(1.15);
+    }
+    body.modo-porno button {
+      background: #ff69b4 !important;
+      color: #fff !important;
+      box-shadow: 0 6px #c71585 !important;
+    }
+    body.modo-porno button:hover {
+      background: #c71585 !important;
+    }
+    body.modo-porno button:active {
+      box-shadow: none !important;
+      transform: translateY(4px) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎲 Ruleta Masturbatoria Pro</h1>
+
+  <button id="btnGirar">Girar Ruleta</button>
+
+  <div id="resultados"></div>
+  <div id="elegido"></div>
+
+  <div id="historial">
+    <h2>📜 Historial de elecciones</h2>
+    <ul id="listaHistorial"></ul>
+  </div>
+
+  <button id="btnModoPorno" title="Cambiar modo porno">Modo Porno 🔥</button>
+
+  <script>
+    const opciones = [
+      { tipo: "Anal", corazones: "❤️❤️❤️❤️❤️❤️", peso: 30 },
+      { tipo: "Trans paja", corazones: "❤️❤️❤️❤️❤️", peso: 25 },
+      { tipo: "Trans anal", corazones: "❤️❤️❤️❤️", peso: 20 },
+      { tipo: "Dildo anal", corazones: "❤️❤️❤️", peso: 12 },
+      { tipo: "Vaginal", corazones: "❤️❤️", peso: 8 },
+      { tipo: "Dildo vaginal", corazones: "❤️", peso: 5 }
+    ];
+
+    function obtenerUltimaEleccion() {
+      return localStorage.getItem('ultimaEleccion') || null;
+    }
+
+    function guardarEleccion(tipo) {
+      const fecha = new Date().toLocaleDateString();
+      const historial = JSON.parse(localStorage.getItem('historial') || '[]');
+      historial.unshift({ fecha, tipo });
+      if (historial.length > 10) historial.pop();
+      localStorage.setItem('historial', JSON.stringify(historial));
+      localStorage.setItem('ultimaEleccion', tipo);
+      actualizarHistorial();
+    }
+
+    function actualizarHistorial() {
+      const lista = document.getElementById('listaHistorial');
+      const historial = JSON.parse(localStorage.getItem('historial') || '[]');
+      lista.innerHTML = '';
+      historial.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.fecha} - ${item.tipo}`;
+        lista.appendChild(li);
+      });
+    }
+
+    function tirarUna(excluirTipo = null) {
+      const opcionesFiltradas = excluirTipo
+        ? opciones.filter(op => op.tipo !== excluirTipo)
+        : opciones;
+
+      const totalPeso = opcionesFiltradas.reduce((acc, op) => acc + op.peso, 0);
+      let random = Math.random() * totalPeso;
+
+      for (let op of opcionesFiltradas) {
+        if (random < op.peso) return op;
+        random -= op.peso;
+      }
+    }
+
+    const btnGirar = document.getElementById('btnGirar');
+    const resultadosDiv = document.getElementById('resultados');
+    const elegidoDiv = document.getElementById('elegido');
+    const btnModoPorno = document.getElementById('btnModoPorno');
+
+    btnGirar.addEventListener('click', () => {
+      girarRuleta();
+    });
+
+    function girarRuleta() {
+      elegidoDiv.textContent = '';
+      resultadosDiv.innerHTML = '';
+      resultadosDiv.classList.add('girando');
+      beep();
+
+      setTimeout(() => {
+        resultadosDiv.classList.remove('girando');
+
+        const ultimaEleccion = obtenerUltimaEleccion();
+
+        const op1 = tirarUna(ultimaEleccion);
+        const op2 = tirarUna(op1.tipo);
+
+        resultadosDiv.innerHTML = `
+          <div class="opcion" tabindex="0" role="button" aria-pressed="false" 
+            onclick="elegir(this)" 
+            data-tipo="${op1.tipo}" 
+            data-corazones="${op1.corazones}">
+            <strong>${op1.tipo}</strong><br>${op1.corazones}
+          </div>
+          <div class="opcion" tabindex="0" role="button" aria-pressed="false" 
+            onclick="elegir(this)" 
+            data-tipo="${op2.tipo}" 
+            data-corazones="${op2.corazones}">
+            <strong>${op2.tipo}</strong><br>${op2.corazones}
+          </div>
+        `;
+      }, 1000);
+    }
+
+    function elegir(element) {
+      const tipo = element.getAttribute('data-tipo');
+      const corazones = element.getAttribute('data-corazones');
+      elegidoDiv.innerHTML = `Has elegido: <strong>${tipo}</strong> ${corazones}`;
+
+      document.querySelectorAll('.opcion').forEach(op => {
+        op.classList.remove('seleccionado');
+        op.setAttribute('aria-pressed', 'false');
+      });
+      element.classList.add('seleccionado');
+      element.setAttribute('aria-pressed', 'true');
+
+      guardarEleccion(tipo);
+      beep(true);
+    }
+
+    function beep(confirm = false) {
+      const context = new AudioContext();
+      const o = context.createOscillator();
+      const g = context.createGain();
+      o.type = 'square';
+      o.frequency.value = confirm ? 880 : 440;
+      o.connect(g);
+      g.connect(context.destination);
+      o.start(0);
+      g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.15);
+      o.stop(context.currentTime + 0.15);
+    }
+
+    actualizarHistorial();
+
+    btnModoPorno.addEventListener('click', () => {
+      document.body.classList.toggle('modo-porno');
+      if (document.body.classList.contains('modo-porno')) {
+        btnModoPorno.textContent = 'Modo Normal 🕶️';
+      } else {
+        btnModoPorno.textContent = 'Modo Porno 🔥';
+      }
+    });
+  </script>
+</body>
+</html>
